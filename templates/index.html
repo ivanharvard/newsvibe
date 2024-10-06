@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="search-container">
+        <h1>NewsVibe</h1>
+
+    <!-- Search -->
+        <h2 style="white-space: normal;">Discover sentiments from various news outlets. Ask about any topic!</h2>
+        <form class="d-flex" id="searchForm" action="/search" method="POST" onsubmit="showLoadingScreen()">
+            <input class="form-control me-2 searchbar" name="q" id="searchbar" type="search" placeholder="Search any topic." aria-label="Search" autocomplete="off">
+            <button type="submit" class="btn-search btn">
+                <img src="../static/search.png" alt="Search">
+            </button>
+            <button type="button" class="btn-settings btn">
+                <img src="../static/settings.png" alt="Settings">
+            </button>
+        </form>
+    </div>
+
+{% endblock %}

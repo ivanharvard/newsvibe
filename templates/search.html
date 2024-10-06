@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+    <div class="modal-results">
+        <div class="modal-results-content">
+            <h1 style="color: #e8e8e8; ">Results</h1>
+
+            <p class="small text-muted" style="text-align: center; color: #e8e8e8;">
+                If a requested source is not listed below, it likely did not have any articles containing the topic within the last month.
+            </p>
+
+        <!-- If template is rendered with an error, display it here -->
+            {% if error %}
+                <div class="search-error">
+                    <h2>{{ error }}</h2>
+                </div>
+            {% else %}
+
+        <!-- Score and news source display -->
+                {% for name, score in percents.items() %}
+                    <div class="result-container">
+                        <div class="news-source scrollable-list">
+                            <h2 style="color: #e8e8e8;">{{ name }}</h2>
+                            <div class="sentiment-ring" data-percent="{{ get_sentiment_range(score) }}">
+                                <span class="percent">{{ score }}</span>
+                            </div>
+                        </div>
+                        <div class="sentiment-description">
+                            <p>Webpages of articles that mention this topic contain words that are: {{ get_sentiment_description(score) }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

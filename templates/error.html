@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block main %}
+    <div class="search-container">
+    <!-- Generic error page -->
+        <h1>Error</h1>
+
+        <h2>Error during NewsAPI fetch.</h2>
+
+        <h4>{{ error }}</h4>
+    </div>
+
+{% endblock %}

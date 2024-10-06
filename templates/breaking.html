@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Breaking News
+{% endblock %}
+
+{% block main %}
+    <div class="modal-results">
+        <div class="modal-results-content">
+            <h1 style="color: #e8e8e8;">Breaking News</h1>
+            <p class="small text-muted" style="text-align: center; color: #e8e8e8;">
+                Top 5 most common words in recent articles written for CNN, Fox News, and Reuters.
+                <br> Irrelevant words filtered out.
+            </p>
+
+        <!-- Top words display -->
+            {% for top_word in top_words %}
+                <div class="result-container">
+                    <div class="news-source scrollable-list">
+                        <a href="{{ url_for('search', q=top_word[0]) }}" onclick="showLoadingScreen()">
+                            <h2 style="color: #e8e8e8;">{{ top_word[0] }}</h2>
+                        </a>
+                        <h3 style="color: #e8e8e8;">Occurrences: {{ top_word[1] }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

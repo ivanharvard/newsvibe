@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block main %}
+    <div class="modal-results">
+        <div class="modal-results-content">
+            <h1 style="color: #e8e8e8; ">About</h1>
+
+            <div class="result-container">
+                <div class="news-source scrollable-list">
+                    <h2 style="color: #e8e8e8;">Made for CS50.</h2>
+                </div>
+                <div class="sentiment-description">
+                    <p>Icons by PixelPerfect and SmashIcons. Requests maxed out at 1000 per day due to limitations of the NewsAPI service.
+
+                        <h3>How it works:</h3>
+
+                        Below is a list of every source that NewsAPI is able to fetch for URLs that has certain keywords.
+                        The URLs are scraped for their text using BeautifulSoup, and then analyzed for their sentiments using VADER.
+                        Sentiments are averaged for every URL that contains that keyword for each respective source.
+                        <hr>
+                        Made by Ivan Gutierrez.
+                    </p>
+                </div>
+            </div>
+
+            <hr style="color: #e8e8e8">
+
+        <!-- News source and source description display -->
+            {% for name, description in sources.items() %}
+                <div class="result-container">
+                    <div class="news-source scrollable-list">
+                        <h2 style="color: #e8e8e8;">{{ name }}</h2>
+                    </div>
+                    <div class="sentiment-description">
+                        <p>{{ description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
