@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from newsapi import NewsApiClient
+import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 from bs4 import BeautifulSoup
 import requests
@@ -9,11 +10,22 @@ from requests.packages.urllib3.util.retry import Retry
 from nltk.corpus import stopwords
 from collections import Counter
 from helper import custom_stop_words
+from dotenv import load_dotenv
+import os
 
 # Sets up NewsAPI and all available sources
 app = Flask(__name__)
-newsapi = NewsApiClient(api_key="233e756218df4eac9f3965515666e465")
+
+load_dotenv()
+API_KEY = os.getenv("NEWS_API_KEY")
+if not API_KEY:
+    raise ValueError("No API key found. Please set the NEWS_API_KEY environment variable.")
+newsapi = NewsApiClient(api_key=API_KEY)
 source_dict = newsapi.get_sources()
+
+# Downloads the stopwords
+nltk.download('stopwords')
+nltk.download('vader_lexicon')
 
 # Filter sources based on language
 english_sources = [
@@ -286,6 +298,7 @@ def find_text_in_url(url, timeout=5):
         "removed.com",
         "disneyparks.disney.go.com",
         "cnnespanol.cnn.com",
+        "ign.com"
     ]
 
     # Checks if URL is apart of the domain

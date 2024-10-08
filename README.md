@@ -4,16 +4,16 @@ NewsVibe is a website that uses Flask for its backend, and uses HTML, CSS, Javas
 
 
 ## How to Install
-1. Download the newsvibe.zip folder
-2. Extract the contents and place them in the root of your file manager in your IDE in a file known as "newsvibe"
-3. In your terminal, run `cd newsvibe`
-4. In your terminal, `flask run`
-5. Follow the directions in the terminal to access the link at which you can access the website
-6. The structure of your newsvibe folder should look like this:
+1. Run `pip install flask flask_session newsapi-python nltk bs4 requests dotenv os`
+2. Download the newsvibe.zip folder
+3. Extract the contents and place them in the root of your file manager in your IDE in a file known as "newsvibe"
+4. In your terminal, run `cd newsvibe`
+5. In your terminal, `flask run`
+6. Follow the directions in the terminal to access the link at which you can access the website
+7. The structure of your newsvibe folder should look like this:
 
 ```
 newsvibe
-├── flask_session
 ├── static
 │   ├── favicon.ico
 │   ├── search.png
@@ -28,6 +28,8 @@ newsvibe
 │   └── search.html
 ├── app.py
 ├── helper.py
+├── README.md
+├── DESIGN.md
 ```
 
 ## How to Use
