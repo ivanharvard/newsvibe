@@ -1,5 +1,8 @@
 # Contains a list of words that are manually decided to be irrelevant. Typically include words that appear to hinder the purpose of the breaking news page.
 custom_stop_words = [
+    "watch",
+    "puzzle",
+    "home",
     "last",
     "billion",
     "app",

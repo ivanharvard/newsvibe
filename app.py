@@ -13,13 +13,18 @@ from helper import custom_stop_words
 from dotenv import load_dotenv
 import os
 
-# Sets up NewsAPI and all available sources
+
 app = Flask(__name__)
 
+# Set up NewsAPI key
 load_dotenv()
 API_KEY = os.getenv("NEWS_API_KEY")
 if not API_KEY:
-    raise ValueError("No API key found. Please set the NEWS_API_KEY environment variable.")
+    raise ValueError(
+        "No API key found. Please set the NEWS_API_KEY environment variable."
+    )
+
+# Gather sources from NewsAPI
 newsapi = NewsApiClient(api_key=API_KEY)
 source_dict = newsapi.get_sources()
 
@@ -81,8 +86,8 @@ def breaking():
         # Gathers URLs from each article and prepares them for text processing.
         article_urls = [article["url"] for article in articles]
         print(article_urls)
-        article_text = ""  # Sets up empty article text for initial use
-        error_occurred = False  # Flag to indicate if an error occurred
+        article_text = ""
+        error_occurred = False 
 
         # Iterate over the list of articles and creates a long string of all the text to be analyzed
         for article_url in article_urls:
